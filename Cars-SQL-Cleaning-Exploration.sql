@@ -51,6 +51,7 @@ FROM cars
 -----------------------------------
 ------Separate the motor type------
 -----------------------------------
+	
 SELECT
     REVERSE(SUBSTRING(REVERSE(Manual_Motor), 1, CHARINDEX(',', REVERSE(Manual_Motor))-2)) AS motor_type
 FROM cars;
@@ -202,6 +203,7 @@ WHERE motor_rank = 1
 GROUP BY Car_Brand,Motor_type
 ORDER BY max_models DESC
 
+	
 -- using Temp table
 -----------------------------------------------------
 
