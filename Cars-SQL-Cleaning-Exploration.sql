@@ -96,7 +96,7 @@ FROM cars
 
 SELECT Car_Year, 
        Car_Brand,
-	   COUNT(Car_Brand) AS Amount_of_models
+       COUNT(Car_Brand) AS Amount_of_models
 FROM cars
 GROUP BY Car_Year, 
        Car_Brand
@@ -116,7 +116,7 @@ ORDER BY 3 DESC
 
 SELECT Car_Year, 
        Car_Brand,
-	   COUNT(Car_Brand) AS Amount_of_models
+       COUNT(Car_Brand) AS Amount_of_models
 FROM cars
 WHERE Car_Year = '2022'
 GROUP BY Car_Year, 
@@ -145,11 +145,11 @@ ORDER BY Amount_of_models DESC
 --------------------------------------------
 
 SELECT Car_Brand,
-	   Motor_type,
-	   COUNT(DISTINCT(Car_Model)) AS Models_per_motor
+       Motor_type,
+       COUNT(DISTINCT(Car_Model)) AS Models_per_motor
 FROM cars
 GROUP BY Car_Brand,
-	   Motor_type
+	 Motor_type
 ORDER BY Car_Brand, Models_per_motor DESC 
 
 
@@ -160,12 +160,12 @@ ORDER BY Car_Brand, Models_per_motor DESC
 WITH CTE AS
 (
 	SELECT Car_Brand,
-		   Motor_type,
-		   COUNT(DISTINCT(Car_Model)) AS Models_per_motor,
-		   DENSE_RANK() OVER(PARTITION BY Car_Brand ORDER BY COUNT(DISTINCT(Car_Model)) DESC) AS Motor_type_rank
+	       Motor_type,
+	       COUNT(DISTINCT(Car_Model)) AS Models_per_motor,
+	       DENSE_RANK() OVER(PARTITION BY Car_Brand ORDER BY COUNT(DISTINCT(Car_Model)) DESC) AS Motor_type_rank
 	FROM cars
 	GROUP BY Car_Brand,
-		     Motor_type
+		 Motor_type
 )
 SELECT Car_Brand, 
        Motor_type 
@@ -186,21 +186,22 @@ WITH CTE AS
 (
 	SELECT 
 	       Car_Brand,
-		   Motor_type,
-		   COUNT(DISTINCT(Car_Model)) AS models_per_motor,
-		   DENSE_RANK() OVER(PARTITION BY Motor_type ORDER BY COUNT(DISTINCT(Car_Model)) DESC) AS motor_rank
+	       Motor_type,
+	       COUNT(DISTINCT(Car_Model)) AS models_per_motor,
+	       DENSE_RANK() OVER(PARTITION BY Motor_type ORDER BY COUNT(DISTINCT(Car_Model)) DESC) AS motor_rank
 	FROM cars
 	GROUP BY 
 	       Car_Brand,
-		   Motor_type
+	       Motor_type
 )
 
 SELECT Car_Brand,
-	   Motor_type,
-	   MAX(models_per_motor) AS max_models
+       Motor_type,
+       MAX(models_per_motor) AS max_models
 FROM CTE
 WHERE motor_rank = 1
-GROUP BY Car_Brand,Motor_type
+GROUP BY Car_Brand,
+	 Motor_type
 ORDER BY max_models DESC
 
 	
@@ -219,20 +220,21 @@ CREATE TABLE #temp_table
 INSERT INTO #temp_table 
 	SELECT 
 	       Car_Brand,
-		   Motor_type,
-		   COUNT(DISTINCT(Car_Model)) AS models_per_motor,
-		   DENSE_RANK() OVER(PARTITION BY Motor_type ORDER BY COUNT(DISTINCT(Car_Model)) DESC) AS motor_rank
+	       Motor_type,
+	       COUNT(DISTINCT(Car_Model)) AS models_per_motor,
+	       DENSE_RANK() OVER(PARTITION BY Motor_type ORDER BY COUNT(DISTINCT(Car_Model)) DESC) AS motor_rank
 	FROM cars
 	GROUP BY 
 	       Car_Brand,
-		   Motor_type
+	       Motor_type
 
 SELECT car_brand,
-	   motor_type,
-	   MAX(models_per_motor) AS max_models
+       motor_type,
+       MAX(models_per_motor) AS max_models
 FROM #temp_table
 WHERE motor_rank = 1
-GROUP BY car_Brand,motor_type
+GROUP BY car_Brand,
+	 motor_type
 ORDER BY max_models DESC
 
 
@@ -249,7 +251,7 @@ ORDER BY max_models DESC
 
 SELECT Car_Brand,
        Motor_type,
-	   AVG(MPG) AS Average_MPG
+       AVG(MPG) AS Average_MPG
 FROM cars 
 GROUP BY Car_Brand,
          Motor_type
@@ -263,16 +265,16 @@ ORDER BY Motor_type, Average_MPG DESC
 WITH CTE AS
 (
 	SELECT Car_Brand,
-		   Motor_type,
-		   AVG(MPG) AS Average_MPG,
-		   DENSE_RANK() OVER(PARTITION BY Motor_type ORDER BY AVG(MPG) DESC) AS MPG_rank
+	       Motor_type,
+	       AVG(MPG) AS Average_MPG,
+	       DENSE_RANK() OVER(PARTITION BY Motor_type ORDER BY AVG(MPG) DESC) AS MPG_rank
 	FROM cars 
 	GROUP BY Car_Brand,
-			 Motor_type
+	         Motor_type
 )
 SELECT Car_Brand,
        Motor_type,
-	   Average_MPG 
+       Average_MPG 
 FROM CTE 
 WHERE MPG_rank = 1
 ORDER BY Average_MPG DESC
@@ -285,11 +287,11 @@ ORDER BY Average_MPG DESC
 WITH CTE AS
 (
 	SELECT Car_Year, 
-		   Car_Brand,
-		   Car_Model,
-		   Motor_type,
-		   MPG,
-		   DENSE_RANK() OVER(PARTITION BY Motor_type ORDER BY MPG DESC) AS MPG_rank
+	       Car_Brand,
+	       Car_Model,
+               Motor_type,
+	       MPG,
+               DENSE_RANK() OVER(PARTITION BY Motor_type ORDER BY MPG DESC) AS MPG_rank
 	FROM cars
 )
 SELECT CONCAT(Car_Year, ' ', Car_Brand, ' ', Car_Model) AS Full_car_name,
@@ -307,12 +309,12 @@ ORDER BY MPG DESC
 WITH CTE AS
 (
 	SELECT *,
-		   ROW_NUMBER() OVER(ORDER BY MPG DESC) AS row_numb
+	       ROW_NUMBER() OVER(ORDER BY MPG DESC) AS row_numb
 	FROM cars 
 )
 SELECT Motor_type,
        AVG(MPG) AS Average_MPG,
-	   COUNT(Motor_type) AS Count_of_cars
+       COUNT(Motor_type) AS Count_of_cars
 FROM CTE
 WHERE row_numb < 101
 GROUP BY Motor_type
@@ -327,11 +329,11 @@ ORDER BY count_of_cars DESC
 CREATE VIEW Car_Brand_Model_Count_2022 AS
 SELECT Car_Year, 
        Car_Brand,
-	   COUNT(Car_Brand) AS Amount_of_models
+       COUNT(Car_Brand) AS Amount_of_models
 FROM cars
 WHERE Car_Year = '2022'
 GROUP BY Car_Year, 
-       Car_Brand
+         Car_Brand
 
 
 
