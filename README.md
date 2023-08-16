@@ -10,9 +10,12 @@ The scraped file is named "cars" which is also uploaded here.
 
 ## Deliverables
 
+This project will analyze different aspects of car data, i.e. popularity of car brands, motor types, fuel economy.
+
 The project starts with web-scraping all the available pages in Python from the selected website. 
 
-This project will analyze different aspects of car data, i.e. popularity of car brands, motor types, fuel economy.
+After scraping, there will be some data cleaning followed by data exploration in SQL Server.
+
 -	Libraries that were used in Python are: BeautifulSoup, requests, pandas.
 Some of the insights that the analysis will provide:
 -	How many car brands and motor types are there?
