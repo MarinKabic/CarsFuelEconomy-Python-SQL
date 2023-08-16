@@ -17,6 +17,7 @@ The project starts with web-scraping all the available pages in Python from the 
 After scraping, there will be some data cleaning followed by data exploration in SQL Server.
 
 -	Libraries that were used in Python are: BeautifulSoup, requests, pandas.
+
 Some of the insights that the analysis will provide:
 -	How many car brands and motor types are there?
 -	Order Car Brands by amount of models produced each year
