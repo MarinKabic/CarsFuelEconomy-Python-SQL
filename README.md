@@ -6,7 +6,7 @@ The dataset that is analyzed is web scraped using Python from https://www.fuelec
 
 More precisely from this https://www.fueleconomy.gov/feg/PowerSearch.do?action=noform&year1=2016&year2=2022&minmsrpsel=0&maxmsrpsel=0&city=0&hwy=0&comb=0&YearSel=2016-2022&make=&mclass=&vfuel=&vtype=&trany=&drive=&cyl=&MpgSel=000&sortBy=Comb&Units=&url=SearchServlet&opt=new&minmsrp=0&maxmsrp=0&minmpg=0&maxmpg=0&sCharge=&tCharge=&startstop=&cylDeact=&rowLimit=50&pageno=1&tabView=0 
 
-The scraped file is named "cars" which is also uploaded here.
+The scraped file is named "cars.csv" which is also uploaded here.
 
 ## Deliverables
 
