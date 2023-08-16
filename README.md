@@ -9,9 +9,11 @@ More precisely from this https://www.fueleconomy.gov/feg/PowerSearch.do?action=n
 The scraped file is named "cars" which is also uploaded here.
 
 ## Deliverables
+
 The project starts with web-scraping all the available pages in Python from the selected website. 
--	Libraries that were used are: BeautifulSoup, requests, pandas.
+
 This project will analyze different aspects of car data, i.e. popularity of car brands, motor types, fuel economy.
+-	Libraries that were used in Python are: BeautifulSoup, requests, pandas.
 Some of the insights that the analysis will provide:
 -	How many car brands and motor types are there?
 -	Order Car Brands by amount of models produced each year
