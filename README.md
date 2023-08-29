@@ -1,6 +1,6 @@
 # CarsFuelEconomy-Python-SQL
 
-This projects is about web scraping in **Python**, data cleaning and data exploration in **SQL Server** on various data about cars released from 2016 to 2022.
+This projects is about web scraping in **Python**, data cleaning and data exploration in **MS SQL Server** on various data about cars released from 2016 to 2022.
 
 The analyzed dataseb is web scraped using Python from https://www.fueleconomy.gov 
 
@@ -14,7 +14,7 @@ This project will analyze different aspects of car data, i.e. popularity of car 
 
 The project starts with web-scraping all the available pages in Python from the selected website. 
 
-After scraping, there will be some data cleaning followed by data exploration in SQL Server.
+After scraping, there will be some data cleaning followed by data exploration in MS SQL Server.
 
 -	Libraries that were used in Python are: BeautifulSoup, requests, pandas.
 
